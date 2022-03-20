@@ -7,7 +7,7 @@ package me.roberttseitin;
 
 import java.util.Scanner;
 
-public class Animal {
+public abstract class Animal {
     // Instance variables
     private final int maxHunger;
     private final int maxThirst;
@@ -19,22 +19,6 @@ public class Animal {
     private int currentWarmth;
 
     private String lastAction = "";
-
-    /*
-     * Default constructor
-     * Sets animals stats to certain default amounts
-     */
-    public Animal() {
-        name = "TBD";
-
-        maxHunger = 15;
-        maxThirst = 15;
-        maxWarmth = 20;
-
-        currentHunger = maxHunger;
-        currentThirst = maxThirst;
-        currentWarmth = maxWarmth;
-    }
 
     /*
      * Overloaded constructor that purely assigns the name of the animal
@@ -230,33 +214,25 @@ public class Animal {
      * The method that is executed to find food, it is expected to be overwritten by the subclasses
      * thus it is the action run when the find food task is initiated
      */
-    protected void findFood() {
-        System.out.println("Default find food, your hunger remains the same");
-    }
+    protected abstract void findFood();
 
     /*
      * The method that is executed to find water, it is expected to be overwritten by the subclasses
      * thus it is the action run when the find water task is initiated
      */
-    protected void findWater() {
-        System.out.println("Default find water, your thirst remains the same");
-    }
+    protected abstract void findWater();
 
     /*
      * The method that is executed to find warmth, it is expected to be overwritten by the subclasses
      * thus it is the action run when the find warmth task is initiated
      */
-    protected void findWarmth() {
-        System.out.println("Default find shelter, your warmth remains the same");
-    }
+    protected abstract void findWarmth();
 
     /*
      * The method that is responsible for adjusting any stats of the animal on a daily basis, is executed regardless of
      * the chosen daily task. Will generally be used as a daily stats' loss.
      */
-    protected void dailyStatsLoss() {
-        System.out.println("This animal has no daily stats loss.");
-    }
+    protected abstract void dailyStatsLoss();
 
     /*
      * Depending on the day will print out an encouraging message
